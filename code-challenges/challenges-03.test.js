@@ -80,6 +80,15 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 
 const alphabetizeBetter = (arr) => {
   // Solution code here...
+  return arr.sort((first, second) => {
+    if(first.toLowerCase() > second.toLowerCase()) {
+      return 1;
+    } else if(second.toLowerCase() > first.toLowerCase()) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -97,6 +106,15 @@ Here is an example of the input:
 
 const sortByPrice = (arr) => {
   // Solution code here...
+  return arr.sort((first, second) => {
+    if(first.price > second.price) {
+      return 1;
+    } else if(second.price > first.price) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -109,6 +127,15 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 
 const sortNumbersByLength = (arr) => {
   // Solution code here...
+  return arr.sort((first, second) => {
+    if(first.toString().length > second.toString().length) {
+      return 1;
+    } else if(second.toString().length > first.toString().length) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -131,6 +158,15 @@ const people = [
 
 const sortPeople = (arr) => {
   // Solution code here...
+  return arr.sort((first, second) => {
+    if(first.lastName > second.lastName) {
+      return 1;
+    } else if(second.lastName > first.lastName) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -145,7 +181,23 @@ If two people have the same full name, the younger one should come first. Do not
 
 const sortPeopleBetter = (arr) => {
   // Solution code here...
+  return arr.sort((first, second) => {
+    if(first.lastName > second.lastName) {
+      return 1;
+    } else if(second.lastName > first.lastName) {
+      return -1;
+    } else {
+      if(first.firstName > second.firstName) {
+        return 1;
+      } else if(second.firstName > first.firstName) {
+        return -1;
+      } else {
+        return first.age - second.age;
+      }
+    }
+  });
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 10 - Stretch Goal
@@ -254,7 +306,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should alphabetize without regard to capitalization', () => {
     expect(alphabetizeBetter(['Alice', 'apple', 'alert', 'Average'])).toStrictEqual([ 'alert', 'Alice', 'apple', 'Average' ]);
     const ans = alphabetizeBetter(['alphabet', 'Zebra', 'Alphabet', 'carrot']);
@@ -263,7 +315,7 @@ xdescribe('Testing challenge 5', () => {
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should sort items by their price', () => {
     expect(sortByPrice([
       {name: 'Sweatshirt', price: 45},
@@ -279,7 +331,7 @@ xdescribe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should sort numbers by their length', () => {
     expect(sortNumbersByLength([10, 2.8, 1, -47.75])).toStrictEqual([1, 10, 2.8, -47.75]);
     expect(sortNumbersByLength([100, 2.82, 1, -47.75])).toStrictEqual([1, 100, 2.82, -47.75]);
@@ -287,7 +339,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should sort people by their last names', () => {
     expect(sortPeople(people)).toStrictEqual([
       new Person('Casey', 'Codefellow', 38),
@@ -299,7 +351,7 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should sort people with more strict ordering', () => {
     const family = [
       new Person('Casey', 'Codefellows', 55),
