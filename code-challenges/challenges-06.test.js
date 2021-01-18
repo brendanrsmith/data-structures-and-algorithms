@@ -132,7 +132,7 @@ const hasChildrenValues = (arr, character) => {
     if (element.name === character) {
       if (element.children === []) {
         hasChildren = false;
-      } else{
+      } else {
         hasChildren = true;
       }
     }
@@ -150,6 +150,19 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+  let hasChildren;
+  let entries = Object.entries(arr);
+  entries.forEach(person => {
+    if (person[1].name === character) {
+      console.log(character, person[1].children);
+      if (person[1].children === []) {
+        hasChildren = false;
+      } else {
+        hasChildren = true;
+      }
+    }
+  });
+  return hasChildren;
 };
 
 /* ------------------------------------------------------------------------------------------------
