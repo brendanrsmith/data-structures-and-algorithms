@@ -10,19 +10,19 @@ Write a function named templateWithJQuery that uses jQuery to get the html templ
 ------------------------------------------------------------------------------------------------ */
 let starWarsPeople = [
   {
-    "name": "Luke Skywalker",
-    "height": "172",
-    "eye_color": "blue"
+    'name': 'Luke Skywalker',
+    'height': '172',
+    'eye_color': 'blue'
   },
   {
-    "name": "C-3PO",
-    "height": "167",
-    "eye_color": "yellow"
+    'name': 'C-3PO',
+    'height': '167',
+    'eye_color': 'yellow'
   },
   {
-    "name": "R2-D2",
-    "height": "96",
-    "eye_color": "red"
+    'name': 'R2-D2',
+    'height': '96',
+    'eye_color': 'red'
   }
 ];
 
@@ -203,13 +203,14 @@ For example:
 
 const removeEvenValues = (arr) => {
   // Solution code here...
-  arr.forEach(number => {
-    if(number % 2 === 0) {
-      const index = arr.indexOf(number);
-      console.log(number, index);
-      arr.splice(index, 1);
+  let i = 0;
+  while (i < arr.length) {
+    if (arr[i] % 2 === 0) {
+      arr.splice(i, 1);
+    } else{
+      i += 1;
     }
-  });
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -229,6 +230,15 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
+  let removeIndex = str.length - numberOfCharacters;
+  if (numberOfCharacters >= str.length) {
+    return '';
+  } else if (numberOfCharacters < 0) {
+    return str;
+  } else {
+    const res = str.slice(0, removeIndex);
+    return res;
+  }
 };
 
 
@@ -241,6 +251,11 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
+  const nums = str.split(',');
+  nums.forEach(num => {
+    const number = Number(num);
+    total += number;
+  });
   return total;
 };
 
@@ -255,6 +270,13 @@ For example, removeVowels('gregor') returns 'grgr'.
 
 const removeVowels = (str) => {
   // Solution code here...
+  const regex = /[aeiou]/g;
+  const consonants = str.split(regex);
+  let res = '';
+  consonants.forEach(letter => {
+    res += letter;
+  });
+  return res;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -269,6 +291,12 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
+//   const regex = /[aeiou]/;
+//   const consonants = [...str];
+//   let res = consonants.reduce(callback( accumulator, n), 0), {
+//     return accumulator + n
+//   });
+//   console.log(res);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -329,7 +357,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should remove the even numbers from the array', () => {
     let list = [1, 2, 3, 4, 5, 6];
     removeEvenValues(list);
@@ -342,7 +370,7 @@ xdescribe('Testing challenge 7', () => {
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should shorten the string based on the first argument', () => {
     expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
     expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
@@ -358,14 +386,14 @@ xdescribe('Testing challenge 8', () => {
   });
 });
 
-xdescribe('Testing challenge 9', () => {
+describe('Testing challenge 9', () => {
   test('It should add up the numbers contained within the string', () => {
     expect(totalSumCSV('1,4,5,7,2')).toStrictEqual(19);
     expect(totalSumCSV('147')).toStrictEqual(147);
   });
 });
 
-xdescribe('Testing challenge 10', () => {
+describe('Testing challenge 10', () => {
   test('It should return the string without vowels', () => {
     expect(removeVowels('gregor')).toStrictEqual('grgr');
     expect(removeVowels('gregor').length).toStrictEqual(4);
