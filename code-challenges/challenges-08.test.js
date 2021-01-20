@@ -211,7 +211,7 @@ const characters = [
 const getCharactersWithoutChildren = (arr) => {
   // Solution code here...
   return arr.filter(character => {
-    if (character.hasOwnProperty('children')) {
+    if (character.children === undefined) {
       return true;
     } else {
       return false;
