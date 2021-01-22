@@ -274,7 +274,7 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 const reversedString = (str) => {
   // Solution code here...
   const arr = str.split('');
-  const reverse = arr.reduce((acc, val, index, array) => {
+  const reverse = arr.reduce((acc, val) => {
     acc.unshift(val);
     return acc;
   }, []);
@@ -334,6 +334,14 @@ const characters = [
 
 const countNumberOfChildren = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, val) => {
+    if (val.children !== undefined){
+      const nchild = val.children.length;
+      return acc + nchild;
+    } else{
+      return acc;
+    }
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -341,11 +349,17 @@ CHALLENGE 6 - Stretch Goal
 
 Write a function that, given an array of numbers as input, uses reduce to calculate the array's average value.
 
-Hint: The accumulator should begin as { count: 0, sum: 0 }
+Hint: The accumulator should begin as 
 ------------------------------------------------------------------------------------------------ */
 
 const calculateAverage = (arr) => {
   // Solution code here...
+  let average = arr.reduce((acc, value) => {
+    acc.count += 1;
+    acc.sum += value;
+    return acc;
+  }, { count: 0, sum: 0 });
+  return average.sum / average.count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -367,6 +381,12 @@ const isPrime = (value) => {
 
 const countPrimeNumbers = (arr) => {
   // Solution code here...
+  return arr.reduce((acc, val) => {
+    if(isPrime(val)) {
+      acc += 1;
+    }
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -410,6 +430,13 @@ const snorlaxData = {
 
 const extractStat = (statName, arr) => {
   // Solution code here...
+  return arr.reduce((acc, val) => {
+    if(val.stat.name === statName) {
+      console.log(val.stat.name);
+      acc = val;
+    }
+    return acc;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -488,25 +515,25 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+describe('Testing challenge 5', () => {
   test('It should return the total number of children', () => {
     expect(countNumberOfChildren(characters)).toStrictEqual(14);
   });
 });
 
-xdescribe('Testing challenge 6', () => {
+describe('Testing challenge 6', () => {
   test('It should return the average of the numbers in the array', () => {
     expect(calculateAverage([18, 290, 37, 4, 55, 16, 7, 85 ])).toStrictEqual(64);
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   test('It should return a count of the prime numbers in the array', () => {
     expect(countPrimeNumbers([1, 2, 13, 64, 45, 56, 17, 8])).toStrictEqual(3);
   });
 });
 
-xdescribe('Testing challenge 8', () => {
+describe('Testing challenge 8', () => {
   test('It should return any stats that match the input', () => {
     expect(extractStat('speed', snorlaxData.stats)).toStrictEqual({ stat: { url: 'https://pokeapi.co/api/v2/stat/6/', name: 'speed' }, effort: 5, baseStat: 30 });
   });
