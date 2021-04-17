@@ -1,55 +1,59 @@
 'use strict';
 
-// to learn more about the cheerio library and what it is doing, look at their documentation: https://www.npmjs.com/package/cheerio
-const cheerio = require('cheerio');
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
-Write a function named templateWithJQuery that uses jQuery to get the html template from the DOM, copy the contents, fill it with the Star Wars People, and append it to the DOM.
+Write a function called sortStarWarsCharacters that sorts the characters in the starWarsPeople array by height from tallest to shortest.
 ------------------------------------------------------------------------------------------------ */
+
 let starWarsPeople = [
   {
-    'name': 'Luke Skywalker',
-    'height': '172',
-    'eye_color': 'blue'
+    "name": "C-3PO",
+    "height": "167",
+    "eye_color": "yellow"
   },
   {
-    'name': 'C-3PO',
-    'height': '167',
-    'eye_color': 'yellow'
+    "name": "Luke Skywalker",
+    "height": "172",
+    "eye_color": "blue"
   },
   {
-    'name': 'R2-D2',
-    'height': '96',
-    'eye_color': 'red'
+    "name": "R2-D2",
+    "height": "96",
+    "eye_color": "red"
   }
 ];
 
-let $ = createSnippetWithJQuery(`
-<main>
-  <section id="template">
-    <h2></h2>
-    <h3></h3>
-    <p></p>
-  </section>
-</main>
-`);
-
-const templateWithJQuery = () => {
+const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
-  let template = $('#template').html();
-  starWarsPeople.forEach((person) => {
-    const section = $(`<section>${template}</section>`);
-    section.find('h2').text(person.name);
-    section.find('h3').text(person.height);
-    section.find('p').text(person.eye_color);
-    $('main').append(section);
-  });
-};
+  return starWarsArr.sort((a, b) => b.height - a.height);
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
+
+Write a function named removeThree that takes an index and an array. The function should removes three items in the array starting with the value at the index. 
+------------------------------------------------------------------------------------------------ */
+
+const removeThree = (idx, arr) => {
+  // Solution code here...
+  arr.splice(idx,3);
+  return arr;
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 3
+
+Write a function named joinArray that takes an array and joins all of the elements together in one string on a space.
+------------------------------------------------------------------------------------------------ */
+
+const joinArray = (arr) => {
+  // Solution code here...
+  return arr.join(' ');
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 4
 
 Write a function named howMuchPencil that takes in a string, as written on the side of a pencil.
 
@@ -65,7 +69,7 @@ const howMuchPencil = (str) => {
   let result = [];
   let string = str;
   // Solution code here...
-  for(let i=0; i<=str.length; i++) {
+  for (let i=0; i<=str.length; i++) {
     result.push(string);
     string = string.slice(1);
   }
@@ -73,7 +77,7 @@ const howMuchPencil = (str) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 3
+CHALLENGE 5
 
 Write a function name wordsToCharList that, given a string as input, returns a new array where every element is a character of the input string.
 
@@ -82,18 +86,16 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
-  let result = [];
-  let string = arr;
-  for(let i=0; i<arr.length; i++) {
-    result.push(string[0]);
-    string = string.slice(1);
+  let ans = [];
+  for (let i=0; i<arr.length; i++){
+    ans.push(arr.slice(i,i+1));
   }
-  return result;
+  return ans;
 };
 
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 4
+CHALLENGE 6
 
 You are making a grocery list for ingredients needed in the gruffalo crumble recipe, below. Rather than taking the entire recipe, you only want a list of the item names.
 
@@ -135,16 +137,16 @@ const gruffaloCrumble = {
 
 const listFoods = (recipe) => {
   let result = [];
-  recipe.ingredients.forEach(ingredient => {
-    const sliceIndex = ingredient.indexOf(' ', 3);
-    const itemName = ingredient.slice(sliceIndex+1);
-    result.push(itemName);
-  });
+  // Solution code here...
+  recipe.ingredients.forEach((item) => {
+    const sliceIndex = item.indexOf(' ', 3);
+    result.push(item.slice(sliceIndex+1));
+  })
   return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 - Stretch Goal
+CHALLENGE 7 - Stretch Goal
 
 Write a function named splitFoods that uses split to produce the same output as Challenge 3.
 
@@ -169,7 +171,7 @@ const splitFoods = (recipe) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 - Stretch Goal
+CHALLENGE 8 - Stretch Goal
 
 Use the same recipe from Challenge 3, above.
 
@@ -181,15 +183,15 @@ Return a new array containing just the verbs. For example, ['Mix until evenly di
 const stepActions = (recipe) => {
   let result = [];
   // Solution code here...
-  recipe.steps.forEach(step => {
-    const stepName = step.split(' ');
-    result.push(stepName[0]);
-  });
+  recipe.steps.forEach((step) => {
+    let line = step.split(' ');
+    result.push(line[0]);
+  })
   return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 7 - Stretch Goal
+CHALLENGE 9 - Stretch Goal
 
 Write a function named removeEvenValues that, given an array of integers as input, deletes all even values from the array, leaving no 'gaps' behind.
 
@@ -214,7 +216,7 @@ const removeEvenValues = (arr) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 8 - Stretch Goal
+CHALLENGE 10 - Stretch Goal
 
 Write a function named removeLastCharacters that takes in a string and a number. The numberOfCharacters argument determines how many characters will be removed from the end of the string. Return the resulting string.
 
@@ -230,20 +232,20 @@ removeLastCharacters('Gregor', 9) returns ''
 
 const removeLastCharacters = (str, numberOfCharacters) => {
   // Solution code here...
-  let removeIndex = str.length - numberOfCharacters;
+  const removeIndex = str.length - numberOfCharacters;
   if (numberOfCharacters >= str.length) {
     return '';
-  } else if (numberOfCharacters < 0) {
+  } else if (numberOfCharacters < 0){
     return str;
   } else {
     const res = str.slice(0, removeIndex);
     return res;
-  }
+  } 
 };
 
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 9 - Stretch Goal
+CHALLENGE 11 - Stretch Goal
 
 Write a function named totalSumCSV that, given a string of comma-separated values (CSV) as input. (e.g. "1,2,3"), returns the total sum of the numeric values (e.g. 6).
 ------------------------------------------------------------------------------------------------ */
@@ -252,16 +254,16 @@ const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
   const nums = str.split(',');
-  nums.forEach(num => {
+  nums.forEach((num) => {
     const number = Number(num);
     total += number;
-  });
+  })
   return total;
 };
 
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 10 - Stretch Goal
+CHALLENGE 12 - Stretch Goal
 
 Write a function named removeVowels that takes in a string and returns a new string where all the vowels of the original string have been removed.
 
@@ -272,15 +274,15 @@ const removeVowels = (str) => {
   // Solution code here...
   const regex = /[aeiou]/g;
   const consonants = str.split(regex);
-  let res = '';
+  let ans = '';
   consonants.forEach(letter => {
-    res += letter;
-  });
-  return res;
+    ans += letter;
+  })
+  return ans;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 11 - Stretch Goal
+CHALLENGE 13 - Stretch Goal
 
 Write a function named extractVowels that takes in a string and returns an array where the first element is the original string with all the vowels removed, and the second element is a string of all the vowels that were removed, in alphabetical order.
 
@@ -291,12 +293,15 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
-//   const regex = /[aeiou]/;
-//   const consonants = [...str];
-//   let res = consonants.reduce(callback( accumulator, n), 0), {
-//     return accumulator + n
-//   });
-//   console.log(res);
+//   let ans = []; 
+//   let first = '';
+//   let vowels = '';
+//   const regex = /[aeiou]/g;
+//   const consonants = str.split(regex);
+//   consonants.forEach(letter => {
+//     first += letter;
+//   })
+//   console.log(consonants);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -311,15 +316,25 @@ Run your tests from the console: jest challenges-05.test.js
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
-  test('It should append the star wars people to the DOM', () => {
-    templateWithJQuery();
-    expect($('section:nth-child(2) h2').text()).toStrictEqual('Luke Skywalker');
-    expect($('section:nth-child(3) h3').text()).toStrictEqual('167');
-    expect($('section:nth-child(4) p').text()).toStrictEqual('red');
+  test('It should sort the star wars characters by height from tallest to shortest', () => {
+    expect(sortStarWarsCharacters(starWarsPeople)[0]['name']).toStrictEqual('Luke Skywalker');
+    expect(sortStarWarsCharacters(starWarsPeople)[2]['height']).toStrictEqual('96');
   })
 });
 
 describe('Testing challenge 2', () => {
+  test('It should return an array with three items removed', () => {
+    expect(removeThree(2, [1, 2, 3, 4, 5, 6, 7, 8])).toStrictEqual([1, 2, 6, 7, 8]);
+  });
+});
+
+describe('Testing challenge 3', () => {
+  test('It should join an array', () => {
+    expect(joinArray(['hello', '301', 'students'])).toStrictEqual('hello 301 students');
+  });
+});
+
+describe('Testing challenge 4', () => {
   test('It should return a list of shortening words', () => {
     expect(howMuchPencil('Welcome')).toStrictEqual(['Welcome', 'elcome', 'lcome', 'come', 'ome', 'me', 'e', '']);
     expect(howMuchPencil('Welcome').length).toStrictEqual(8);
@@ -328,7 +343,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+describe('Testing challenge 5', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
@@ -337,27 +352,27 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+describe('Testing challenge 6', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
     expect(listFoods(gruffaloCrumble).length).toStrictEqual(11);
   });
 });
 
-describe('Testing challenge 5', () => {
+describe('Testing challenge 7', () => {
   test('It should return a list of foods', () => {
     expect(splitFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
   });
 });
 
-describe('Testing challenge 6', () => {
+describe('Testing challenge 8', () => {
   test('It should return a list of recipe steps', () => {
     expect(stepActions(gruffaloCrumble)).toStrictEqual(['Pre-heat', 'De-prickle', 'Sprinkle', 'Mix', 'Grease', 'Combine', 'Fold', 'Spread', 'Bake']);
     expect(stepActions(gruffaloCrumble).length).toStrictEqual(9);
   });
 });
 
-describe('Testing challenge 7', () => {
+describe('Testing challenge 9', () => {
   test('It should remove the even numbers from the array', () => {
     let list = [1, 2, 3, 4, 5, 6];
     removeEvenValues(list);
@@ -370,7 +385,7 @@ describe('Testing challenge 7', () => {
   });
 });
 
-describe('Testing challenge 8', () => {
+describe('Testing challenge 10', () => {
   test('It should shorten the string based on the first argument', () => {
     expect(removeLastCharacters('Gregor', 2)).toStrictEqual('Greg');
     expect(removeLastCharacters('Gregor', 2).length).toStrictEqual(4);
@@ -386,14 +401,14 @@ describe('Testing challenge 8', () => {
   });
 });
 
-describe('Testing challenge 9', () => {
+describe('Testing challenge 11', () => {
   test('It should add up the numbers contained within the string', () => {
     expect(totalSumCSV('1,4,5,7,2')).toStrictEqual(19);
     expect(totalSumCSV('147')).toStrictEqual(147);
   });
 });
 
-describe('Testing challenge 10', () => {
+describe('Testing challenge 12', () => {
   test('It should return the string without vowels', () => {
     expect(removeVowels('gregor')).toStrictEqual('grgr');
     expect(removeVowels('gregor').length).toStrictEqual(4);
@@ -402,7 +417,7 @@ describe('Testing challenge 10', () => {
   });
 });
 
-xdescribe('Testing challenge 11', () => {
+xdescribe('Testing challenge 13', () => {
   test('It should return the string without vowels', () => {
     expect(extractVowels('gregor')).toStrictEqual(['grgr', 'eo']);
     expect(extractVowels('gregor').length).toStrictEqual(2);
@@ -410,8 +425,3 @@ xdescribe('Testing challenge 11', () => {
     expect(extractVowels('The quick brown fox')).toStrictEqual(['Th qck brwn fx', 'eioou']);
   });
 });
-
-
-function createSnippetWithJQuery(html){
-  return cheerio.load(html);
-};
