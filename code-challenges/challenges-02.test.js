@@ -10,13 +10,12 @@ Write a function named raisedToTheThird that takes in an array of numbers and re
 
 const raisedToTheThird = (arr) => {
   // Solution code here...
-  const returnArray = [];
-  arr.forEach(number => {
-    const cube = Math.pow(number, 3);
-    returnArray.push(cube);
+  let cube =[];
+  arr.forEach(element => {
+    cube.push(Math.pow(element, 3));
   });
-  return returnArray;
-};
+  return cube;
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -27,8 +26,7 @@ Write a function that appends ' The end.' to a string, and returns the modified 
 
 const appendTheEnd = (str) => {
   // Solution code here...
-  const newString = str + ' The end.';
-  return newString;
+  return str + ' The end.';
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -84,9 +82,9 @@ console.log(people[1].isAuthor) prints true
 
 const setStatusAsAuthor = (people) => {
   // Solution code here...
-  people.forEach((person) => {
+  people.forEach(person => {
     person.isAuthor = true;
-  });
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,9 +104,9 @@ console.log(a) prints [1, 2, 3, 4]
 
 const append = (arr1, arr2) => {
   // Solution code here...
-  arr2.forEach((number) => {
-    arr1.push(number);
-  });
+  arr2.forEach(element => {
+    arr1.push(element);
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
