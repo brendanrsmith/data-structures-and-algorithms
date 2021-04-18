@@ -15,7 +15,7 @@ const toLastNames = people => {
   // Solution code here...
   return people.map(element => {
     return element.firstName + ' ' + element.lastName;
-  });
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -34,6 +34,34 @@ const validatePin = (pin) => {
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
+
+Write a function named validateWord that uses a regular expression pattern to validate that a word is between 5 and 10 characters long.
+
+If the word is between 5 and 10 characters long, return true. Otherwise, return false.
+------------------------------------------------------------------------------------------------ */
+
+const validateWord = (word) => {
+  // Solution code here...
+  const re = /^\D{5,10}$/;
+  return re.test(word);
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 4
+
+Write a function named hasNumber that uses a regular expression pattern to determine if a string has one or more letter followed by one or more digit.
+
+If it does, return true. If not, return false.
+------------------------------------------------------------------------------------------------ */
+
+const hasNumber = (string) => {
+  // Solution code here...
+  const re = /\D+\d+/;
+  return re.test(string);
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 5
 
 Write a function named validateEmail that takes in an email address and validates it based
 on several rules:
@@ -56,7 +84,7 @@ const validateEmail = (email) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 4
+CHALLENGE 6
 
 Write a function named validatePhoneNumber that accepts a phone number and determines if it is valid.
 
@@ -84,7 +112,7 @@ const validatePhoneNumber = (phoneNumber) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 - Stretch Goal
+CHALLENGE 7 - Stretch Goal
 
 Write a function named findTagNames that iterates over an array of HTML strings and uses a regular expression pattern to return the closing tags.
 
@@ -130,6 +158,31 @@ describe('Testing challenge 2', () => {
 });
 
 describe('Testing challenge 3', () => {
+  test('It should validate a word between 5 and 10 characters', () => {
+    expect(validateWord('Hello')).toBeTruthy();
+    expect(validateWord('Bob')).toBeFalsy();
+    expect(validateWord(12345)).toBeFalsy();
+    expect(validateWord('abcdefghijkl')).toBeFalsy();
+    expect(validateWord('cookie')).toBeTruthy();
+    expect(validateWord(789)).toBeFalsy();
+    expect(validateWord('Code301')).toBeFalsy();
+  });
+});
+
+describe('Testing challenge 4', () => {
+  test('It should return true if a string has one or more word characters followed by one or more digits', () => {
+    expect(hasNumber('Hell0')).toBeTruthy();
+    expect(hasNumber('Bob')).toBeFalsy();
+    expect(hasNumber(12345)).toBeFalsy();
+    expect(hasNumber('abcdefghijkl')).toBeFalsy();
+    expect(hasNumber('c00kie')).toBeTruthy();
+    expect(hasNumber(789)).toBeFalsy();
+    expect(hasNumber('Code301')).toBeTruthy();
+    expect(hasNumber('99Code')).toBeFalsy();
+  });
+});
+
+describe('Testing challenge 5', () => {
   test('It should match a basic email', () => {
     expect(validateEmail('joe@codefellows.com')).toBeTruthy();
   });
@@ -159,7 +212,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+describe('Testing challenge 6', () => {
   test('It should match the acceptable phone number formats', () => {
     expect(validatePhoneNumber('(555) 555-5555')).toBeTruthy();
     expect(validatePhoneNumber('555 555-5555')).toBeTruthy();
@@ -183,7 +236,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-xdescribe('Testing challenge 5', () => {
+xdescribe('Testing challenge 7', () => {
   test('It should return the closing tags', () => {
     expect(findTagNames(['<h1>Hello, world!</h1>', '<p>Welcome to my site</p>'])).toStrictEqual(['/h1', '/p']);
   });

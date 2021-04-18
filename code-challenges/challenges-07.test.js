@@ -1,31 +1,45 @@
 'use strict';
 
-// to learn more about the cheerio library and what it is doing, look at their documentation: https://www.npmjs.com/package/cheerio
-const cheerio = require('cheerio');
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
-Write a function named addTea that uses jQuery to add tea to the shopping list.
+Write a function named replaceZeros that, given a string, uses Regex to replace all '0' with the word 'zero'. 
 ------------------------------------------------------------------------------------------------ */
 
-let $ = createSnippetWithJQuery(`
-  <ul>
-    <li>apples</li>
-    <li>bananas</li>
-    <li>carrots</li>
-    <li>beans</li>
-    <li>coffee</li>
-  </ul>
-`);
-
-const addTea = () => {
+const replaceZeros = (string) => {
   // Solution code here...
-  $('ul').append('<li>tea</li>');
-};
+  const regex = /[0]/g;
+  return string.replace(regex, 'zero');
+}
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
+
+Write a function named addOne that, given an array of numbers, uses map to return a new array with each value simply incremented by 1. 
+------------------------------------------------------------------------------------------------ */
+
+const addOne = (arr) => {
+  // Solution code here...
+  return arr.map(element => {
+    return element +1;
+  })
+}
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 3
+
+Write a function named addQuestion that, given an array of strings, uses map to return a new array containing each string followed by a question mark character.
+------------------------------------------------------------------------------------------------ */
+
+const addQuestion = (arr) => {
+  // Solution code here...
+  return arr.map(element => {
+    return element + '?';
+  })
+}
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 4
 
 Write a function named forLoopTwoToThe that, given an array of integers as input, iterates over the array and returns a new array. The returned array should contain the result of raising 2 to the power of the original input element.
 
@@ -36,30 +50,30 @@ For example, twoToThe([1,2,3]) returns [2,4,8] because 2 ^ 1 = 2, 2 ^ 2 = 4, and
 
 const forLoopTwoToThe = (arr) => {
   // Solution code here...
-  const returnArray = [];
-  for (const element of arr) {
-    returnArray.push(Math.pow(2, element));
+  let ans = [];
+  for (let element of arr) {
+    ans.push(Math.pow(2, element));
   }
-  return returnArray;
+  return ans;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 3
+CHALLENGE 5
 
 Write a function named forEachTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1, but uses forEach instead of a for loop.
 ------------------------------------------------------------------------------------------------ */
 
 const forEachTwoToThe = (arr) => {
   // Solution code here...
-  const returnArray = [];
+  let ans = [];
   arr.forEach(element => {
-    returnArray.push(Math.pow(2, element));
-  });
-  return returnArray;
+    ans.push(Math.pow(2, element));
+  })
+  return ans;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 4
+CHALLENGE 6
 
 Write a function named mapTwoToThe that produces the same output as your forLoopTwoToThe function from challenge 1 and your forEachTwoToThe function from challenge 2, but uses map instead of a for loop or forEach.
 ------------------------------------------------------------------------------------------------ */
@@ -68,11 +82,11 @@ const mapTwoToThe = (arr) => {
   // Solution code here...
   return arr.map(element => {
     return Math.pow(2, element);
-  });
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 - Stretch Goal
+CHALLENGE 7 - Stretch Goal
 
 Write a function named charCode that, given an array of letters as an input, uses map to return a new array where each element is the result of the `charCodeAt` method on the original array element.
 
@@ -83,13 +97,13 @@ For example: charCode(['h','i']) returns [104, 105].
 
 const charCode = (arr) => {
   // Solution code here...
-  return arr.map(value => {
-    return value.charCodeAt();
-  });
+  return arr.map(element => {
+    return element.charCodeAt();
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 - Stretch Goal
+CHALLENGE 8 - Stretch Goal
 
 Write a function that, given an array of numbers as input, uses map to return a new array where each element is either the string "even" or the string "odd", based on each value.
 
@@ -100,21 +114,10 @@ For example: evenOdd([1,2,3]) returns ['odd','even','odd'].
 
 const evenOdd = (arr) => {
   // Solution code here...
-  return arr.map(element => {
-    if (element % 2 === 0){
-      return 'even';
-    }
-    else if (element % 2 === 1) {
-      return 'odd';
-    }
-    else {
-      return 'N/A';
-    }
-  });
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 7 - Stretch Goal
+CHALLENGE 9 - Stretch Goal
 
 Use the snorlaxAbilities data, below, for this challenge.
 
@@ -157,13 +160,13 @@ const snorlaxAbilities = {
 
 const extractAbilities = (arr) => {
   // Solution code here...
-  return arr.map(abilities => {
-    return abilities.ability.name;
-  });
+  return arr.map(abs => {
+    return abs.ability.name;
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 8 - Stretch Goal
+CHALLENGE 10 - Stretch Goal
 
 Use the snorlaxStats data, below, for this challenge.
 
@@ -207,12 +210,6 @@ const snorlaxStats = {
 
 const extractStats = (arr) => {
   // Solution code here...
-  return arr.map(stats => {
-    let returnObject = new Object();
-    returnObject.name = stats.stat.name;
-    returnObject.total = (stats.effort + stats.baseStat);
-    return returnObject;
-  });
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -227,13 +224,24 @@ Run your tests from the console: jest challenges-07.test.js
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
-  test('It should add tea to the list', () => {
-    addTea();
-    expect($('li:nth-child(6)').text()).toStrictEqual('tea');
-  })
+  test('It should replace all the 0\'s with the word "zero"', () => {
+    expect(replaceZeros('301 is s0 much fun!')).toStrictEqual('3zero1 is szero much fun!');
+  });
 });
 
 describe('Testing challenge 2', () => {
+  test('It should add one to all the numbers in the array', () => {
+    expect(addOne([2, 3, 5, 11])).toStrictEqual([3, 4, 6, 12]);
+  });
+});
+
+describe('Testing challenge 3', () => {
+  test('It should add a question mark to the end of each string', () => {
+    expect(addQuestion(['hello', '301', 'students'])).toStrictEqual(['hello?', '301?', 'students?']);
+  });
+});
+
+describe('Testing challenge 4', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forLoopTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forLoopTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -244,7 +252,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+describe('Testing challenge 5', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(forEachTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(forEachTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -255,7 +263,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+describe('Testing challenge 6', () => {
   test('It should return two raised to the power of the integer', () => {
     expect(mapTwoToThe([0, 4, 5])).toStrictEqual([1, 16, 32]);
     expect(mapTwoToThe([0, 4, 5]).length).toStrictEqual(3);
@@ -266,14 +274,14 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
+describe('Testing challenge 7', () => {
   test('It should return an array containing the character code for each letter', () => {
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1'])).toStrictEqual([ 67, 111, 100, 101, 51, 48, 49 ]);
     expect(charCode(['C', 'o', 'd', 'e', '3', '0', '1']).length).toStrictEqual(7);
   });
 });
 
-describe('Testing challenge 6', () => {
+xdescribe('Testing challenge 8', () => {
   test('It should return an array containing the keys from an object', () => {
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541])).toStrictEqual([ 'odd', 'even', 'even', 'even', 'odd', 'odd', 'even', 'odd' ]);
     expect(evenOdd([5, 8, 2, 6, 9, 13, 542, 541]).length).toStrictEqual(8);
@@ -295,14 +303,14 @@ describe('Testing challenge 6', () => {
   });
 });
 
-describe('Testing challenge 7', () => {
+describe('Testing challenge 9', () => {
   test('It should return an array containing only the ability names', () => {
     expect(extractAbilities(snorlaxAbilities.abilities)).toStrictEqual(['gluttony', 'cute charm', 'immunity']);
     expect(extractAbilities(snorlaxAbilities.abilities).length).toStrictEqual(3);
   });
 });
 
-describe('Testing challenge 8', () => {
+xdescribe('Testing challenge 10', () => {
   test('It should return an array containing objects with name and total values', () => {
     expect(extractStats(snorlaxStats.stats)).toStrictEqual([
       { name: 'speed', total: 35, },
@@ -312,7 +320,3 @@ describe('Testing challenge 8', () => {
     expect(extractStats(snorlaxStats.stats).length).toStrictEqual(3);
   });
 });
-
-function createSnippetWithJQuery(html){
-  return cheerio.load(html);
-};

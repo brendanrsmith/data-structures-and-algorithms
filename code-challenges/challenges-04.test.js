@@ -1,33 +1,35 @@
 'use strict';
 
-// to learn more about the cheerio library and what it is doing, look at their documentation: https://www.npmjs.com/package/cheerio
-const cheerio = require('cheerio');
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
-Without altering the html, write a function named generateSubmitButton that uses jQuery to create a submit button with the text "submit" and append it to the DOM.
+Write a function called addTwo that takes in an array and adds two to every value using a for loop. Place the new value in a new array. Return the new array. 
 ------------------------------------------------------------------------------------------------ */
-let $ = createSnippetWithJQuery(`
-<section>
-  <form>
-    <label> Frist Name:
-      <input type="text" name="first" />
-    </label>
 
-    <label> Last Name:
-      <input type="text" name="last" />
-    </label>
-  </form>
-</section>
-`);
-
-const generateSubmitButton = () => {
+const addTwo = (arr) => {
   // Solution code here...
-  $('form').append('<button>submit</button>');
+  let ans = [];
+  arr.forEach(element => {
+    ans.push(element + 2);
+  });
+  return ans;
 }
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
+
+Write a function named containsW that takes in a string. This function should use a regular expression pattern to return true if the string contains the letter 'w' in lower case or false if it does not. 
+
+------------------------------------------------------------------------------------------------ */
+
+const containsW = (str) => {
+  // Solution code here...
+  const regex = /w/;
+  return regex.test(str);
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 3
 
 Write a function named isNum that takes in a string or number of any length. This function should use a regular expression pattern to return true if the input contains a number, and false if the input does not contain a number.
 
@@ -40,12 +42,25 @@ For example:
 
 const isNum = (input) => {
   // Solution code here...
-  let regex = /\d/;
+  const regex = /\d/;
   return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 3
+CHALLENGE 4
+
+Write a function named containsWorld that takes in a string or number of any length. This function should use a regular expression pattern to return true if the input contains the word 'world' all in lower-case letters, and false if the input does not.
+
+------------------------------------------------------------------------------------------------ */
+
+const containsWorld = (input) => {
+  // Solution code here...
+  const regex = /world/;
+  return regex.test(input);
+};
+
+/* ------------------------------------------------------------------------------------------------
+CHALLENGE 5
 
 Write a function named isCapitalized that takes in a string. This function should use a regular expression pattern to match all words that begin with a capital letter. It should only match words, not punctuation.
 
@@ -54,34 +69,32 @@ Return an array containing all the matches.
 
 const isCapitalized = (str) => {
   // Solution code here...
-  let returnArray = [];
+  let ans = []; 
   const regex = /[A-Z]\w+/g;
-  if (regex.test(str) === true) {
-    returnArray = (str.match(regex));
-  }
-  return returnArray;
+  if (regex.test(str) === true){
+    ans = (str.match(regex))
+  };
+  return ans;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 4
+CHALLENGE 6
 
 Write a function named citiesAtoJ that takes in an array of city names and uses a regular expression pattern to return a new array containing any cities that begin with the letters A through J, inclusive.
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
   // Solution code here...
-  const returnArray = [];
+  let ans =[];
   const regex = /^[A-J]/;
-  arr.forEach(element => {
-    if (regex.test(element) === true) {
-      returnArray.push(element);
-    }
-  });
-  return returnArray;
+  arr.forEach((city) => {
+    if (regex.test(city)) ans.push(city);
+  })
+  return ans;
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 - Stretch Goal
+CHALLENGE 7 - Stretch Goal
 
 You have created a game application and begin by asking users an easy question: In which month is Halloween?
 
@@ -99,7 +112,7 @@ const matchMonth = (input) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 - Stretch Goal
+CHALLENGE 8 - Stretch Goal
 
 Write a function named noPunctuation that contains a regular expression pattern to find all of the words that contain a space immediately at the end of the word. Return an array of all such words, still containing the space at the end.
 
@@ -111,11 +124,10 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 const noPunctuation = str => {
   // Solution code here...
   return str.match(/\w*[^.,!?]\s/g);
-
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 7 - Stretch Goal
+CHALLENGE 9 - Stretch Goal
 
 You want to teach a friend how to play hangman and want to show them using a partially complete puzzle.
 
@@ -134,7 +146,7 @@ let hangman = (str) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 8 - Stretch Goal
+CHALLENGE 10 - Stretch Goal
 
 Write a function named findShells that takes in the string below and uses a regular expression pattern to find all instances of the following words: "sells", "shells", "seashells".
 
@@ -162,13 +174,24 @@ Run your tests from the console: jest challenges-04.solution.test.js
 
 ------------------------------------------------------------------------------------------------ */
 describe('Testing challenge 1', () => {
-  test('It should add a submit button to the DOM', () => {
-    generateSubmitButton();
-    expect($('button').text()).toStrictEqual('submit');
+  test('It should add two to every value', () => {
+    expect(addTwo([1, 2, 4])).toStrictEqual([3, 4, 6]);
   })
 });
 
 describe('Testing challenge 2', () => {
+  test('It should return true if the input contains a lower case w', () => {
+    expect(containsW('hello world')).toBe(true);
+  });
+  test('It should return false if the input contains an upper case W', () => {
+    expect(containsW('Hello World')).toBe(false);
+  });
+  test('It should return false if the input does not contain a w', () => {
+    expect(containsW('hello everyone')).toBe(false);
+  })
+})
+
+describe('Testing challenge 3', () => {
   test('It should return true if the input is a number', () => {
     expect(isNum(1234567890)).toBeTruthy();
     expect(isNum('12345')).toBeTruthy();
@@ -182,7 +205,19 @@ describe('Testing challenge 2', () => {
   });
 });
 
-describe('Testing challenge 3', () => {
+describe('Testing challenge 4', () => {
+  test('It should return true if the input contains the word school in lower case', () => {
+    expect(containsWorld('hello world')).toBe(true);
+  });
+  test('It should return false if the input contains the word school with any upper case letters', () => {
+    expect(containsWorld('Hello World')).toBe(false);
+  });
+  test('It should return false if the input does not contain the word school', () => {
+    expect(containsWorld('hello everyone')).toBe(false);
+  });
+})
+
+describe('Testing challenge 5', () => {
   test('It should only return words that begin with a capital letter', () => {
     const capitalResult = isCapitalized('We only want to Return the Words that begin With a capital Letter');
 
@@ -195,7 +230,7 @@ describe('Testing challenge 3', () => {
   });
 });
 
-describe('Testing challenge 4', () => {
+describe('Testing challenge 6', () => {
   let cities = ['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'];
 
   test('It should return the cities whose names begin with the letters A through J', () => {
@@ -211,7 +246,7 @@ describe('Testing challenge 4', () => {
   });
 });
 
-describe('Testing challenge 5', () => {
+describe('Testing challenge 7', () => {
   test('It should match any of the acceptable inputs', () => {
     expect(matchMonth('Oct')).toBeTruthy();
     expect(matchMonth('oct')).toBeTruthy();
@@ -229,7 +264,7 @@ describe('Testing challenge 5', () => {
   });
 });
 
-describe('Testing challenge 6', () => {
+describe('Testing challenge 8', () => {
   const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia vel massa sed egestas. Nunc faucibus iaculis elit, a scelerisque enim condimentum sed. Aenean ac scelerisque sem, et pharetra diam.';
 
   test('It should only return words that are immediately followed by a space', () => {
@@ -243,7 +278,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-describe('Testing challenge 7', () => {
+describe('Testing challenge 9', () => {
   let startString = 'This is a regex challenge. We are trying to create a hangman phrase where all of the vowels are missing!';
 
   test('It should remove the vowels from the hangman string and replace them with underscores', () => {
@@ -256,13 +291,9 @@ describe('Testing challenge 7', () => {
   });
 });
 
-describe('Testing challenge 8', () => {
+describe('Testing challenge 10', () => {
   test('It should return an array of instances of "sells", shells", and "seashells"', () => {
     expect(findShells(seashells)).toStrictEqual(['sells', 'seashells', 'shells', 'sells', 'seashells', 'sells', 'shells', 'sells', 'shells']);
     expect(findShells(seashells).length).toStrictEqual(9);
   });
 });
-
-function createSnippetWithJQuery(html){
-  return cheerio.load(html);
-};
