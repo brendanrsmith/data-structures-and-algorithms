@@ -1,35 +1,32 @@
 'use strict';
 
-const { response } = require('express');
-
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 1 - Review
 
-Build a simple express server. Connect a '/hello' route that sends a greeting of your  choice. Connect a '/aboutme' route that sends a short bio about you to the front-end. Finally, connect a '/favoritefoods' route that sends an array to the front-end of your favorite foods. All other routes should respond with a status of 404.
+Write a function named getNames that, given an array of people objects, uses map to return an array of names reversed.
+
+For example: 
+[
+{
+  name: 'lloyd',
+  age: 32,
+  shoeSize: 12
+}, 
+{
+  name: 'jamie',
+  age: 21,
+  shoeSize: 8
+}
+]
+
+Returns: ['dyoll', 'eimaj'];
 ------------------------------------------------------------------------------------------------ */
 
-const createServer = () => {
+const getNames = (arr) => {
   // Solution code here...
-  const express=require('express');
-  const app=express();
-  app.get('/hello', (hello));
-  app.get('/aboutme', (aboutme));
-  app.get('/favoritefoods', (favoritefoods));
-
-  function hello (request, response) {
-    response.send('hello');
-  }
-  function aboutme (request, response) {
-    response.send('my name is brendan');
-  }
-  function favoritefoods (request, response) {
-    response.send(['tacos','salsa','pizza']);
-  }
-  var server = app.listen(3301, function () {
-    var port = server.address().port;
-    console.log('Example app listening at port', port);
-  });
-  return server;
+  return arr.map(element => {
+    return element.name.split('').reverse().join('');
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -45,14 +42,14 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 const count = (target, input) => {
   // Solution code here...
   return input.reduce((acc, element) => {
-    return acc + element.reduce((acc, num) => {
-      if(num === target) {
+    return acc + element.reduce((acc, val) => {
+      if(val === target) {
         return acc + 1;
       } else {
         return acc;
       }
-    }, 0);
-  }, 0);
+    },0)
+  },0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,11 +64,11 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
-  return input.reduce((acc, element) => {
-    return acc + element.reduce((acc, num) => {
-      return acc + num;
-    },0);
-  },0);
+  return input.reduce((acc, val) => {
+    return acc + val.reduce((acc, val) => {
+      return acc + val;
+    },0)
+  },0)
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -87,7 +84,7 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 ------------------------------------------------------------------------------------------------ */
 
 const divisibleByFiveTwoToThePower = (input) => {
-  // Solution code here...
+  // Solution code here...  
   return input.map(element => {
     let filter =  element.filter(num => {
       if (num % 5) {
@@ -105,7 +102,7 @@ const divisibleByFiveTwoToThePower = (input) => {
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 5 - Stetch Goal
+CHALLENGE 5 
 
 Write a function named findMaleAndFemale that, given the Star Wars data, below,
 returns the names of the characters whose gender is either male or female.
@@ -169,34 +166,30 @@ let starWarsData = [{
 let findMaleAndFemale = (data) => {
   // Solution code here...
   let filter = data.filter(object => {
-    if (object.gender === 'male'){
+    if( object.gender === 'male'){
       return true;
-    } else if (object.gender === 'female'){
+    } else if( object.gender === 'female'){
       return true;
-    } else {
-      return false;
-    }
+    } else return false;
   });
   let names = filter.reduce((acc, obj) => {
     return acc + ' and ' + obj.name;
-  },'');
-  return names.substring(5);
+  }, '');
+  return names.substring(5); 
 };
 
 /* ------------------------------------------------------------------------------------------------
-CHALLENGE 6 - Stretch Goal
+CHALLENGE 6 
 
 Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the shortest character.
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
   // Solution code here...
-  let shortest = data.reduce((acc, object) => {
-    if (object.height*1 < acc.height*1){
-      return object;
-    } else {
-      return acc;
-    }
+  let shortest = data.reduce((acc, val) => {
+    if( val.height*1 < acc.height*1) {
+      return val;
+    } else return acc;
   });
   return shortest.name;
 };
@@ -213,41 +206,9 @@ Run your tests from the console: jest challenges-10.test.js
 ------------------------------------------------------------------------------------------------ */
 
 describe('Testing challenge 1', () => {
-
-  const request = require('supertest');
-
-  let server;
-
-  beforeAll(function () {
-    server = createServer();
-  });
-
-  afterAll(function () {
-    server.close();
-  });
-
-  test('responds to /hello', function testHello(done) {
-    request(server)
-      .get('/hello')
-      .expect(200, done);
-  });
-
-  test('responds to /aboutme', function testAboutMe(done) {
-    request(server)
-      .get('/aboutme')
-      .expect(200, done);
-  });
-
-  test('responds to /favoritefoods', function testFavoriteFoods(done) {
-    request(server)
-      .get('/favoritefoods')
-      .expect(200, done);
-  });
-
-  test('responds to /foo', function testNotFound(done) {
-    request(server)
-      .get('/foo')
-      .expect(404, done);
+  test('It returns an array of names reversed', () => {
+    expect(getNames([{name:'lloyd', age: 32, shoeSize: 12}, {name:'jamie', age:21, shoeSize: 8}])).toStrictEqual(['dyoll', 'eimaj']);
+    expect(getNames([])).toStrictEqual([]);
   });
 });
 
