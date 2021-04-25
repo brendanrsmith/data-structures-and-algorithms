@@ -13,3 +13,24 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 ### 401 Data Structures, Code Challenges
 
 - Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
+
+# Singly Linked List
+<!-- Short summary or background information -->
+A data structure consisting of a series of nodes, with each subsequent node containing two attributes: a value, and a pointer to the next node in the list.
+
+## Challenge
+<!-- Description of the challenge -->
+Create an implementation of a singly linked list, including methods for Appending, inserting, searching, and rendering a string containing a summary of all items contained in the list. 
+
+## Approach & Efficiency
+<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+
+## API
+<!-- Description of each method publicly available to your Linked List -->
+`append(value)` - Adds a new node value to the list at the tail.
+
+`insert(value)` - Adds a new node value to the list at the head.
+
+`includes(value)` - Takes a value, and returns true/false if the value is present in the list.
+
+`toString()` - Returns a string representing all the values in the linked list in text format.
