@@ -22,3 +22,5 @@ console.log(LL.includes(30));
 console.log(LL.includes(40));
 
 console.log(LL.toString());
+
+module.exports = LinkedList;
