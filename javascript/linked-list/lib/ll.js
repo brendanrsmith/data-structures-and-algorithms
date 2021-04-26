@@ -45,6 +45,85 @@ class LinkedList {
     return this;
   }
 
+  insertBefore(value, newVal) {
+    try {
+    // instantiate a new node to add to our linkedlist
+      let node = new Node(newVal);
+      // set indexer to head
+      let current = this.head;
+      // if current head is search value, insert new node at head position
+      if (current.value === value) {
+        node.next = this.head;
+        this.head = node;
+      } else {
+      // let a previous variable
+        let previous = this.head;
+        current = current.next;
+        // search for value in list
+        while (current.next) {
+          if (current.value === value) {
+            // if value found, set node.next to current
+            node.next = current;
+            // then, set previous to point at new node
+            previous.next = node;
+            break;
+          }
+          current = current.next;
+          previous = previous.next;
+        }
+        // check last node
+        if (current.value === value) {
+          node.next = current;
+          previous.next = node;
+        } else {
+          throw 'Exception';
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+    return this;
+  }
+
+  insertAfter(value, newVal) {
+    try {
+    // instantiate a new node to add to our linkedlist
+      let node = new Node(newVal);
+      // set indexer to head
+      let current = this.head;
+      // if current head is search value, insert new node after head position
+      if (current.value === value) {
+        node.next = current.next;
+        current.next = node;
+      } else {
+      // let a previous variable
+        current = current.next;
+        // search for value in list
+        while (current.next) {
+          if (current.value === value) {
+            // if value found, set node.next to point at current.next
+            node.next = current.next;
+            // then set current.next to point at new node
+            current.next = node;
+            break;
+          }
+          current = current.next;
+        }
+        // check last node
+        if (current.value === value) {
+          current.next = node;
+        } else {
+          throw 'Exception';
+        }
+      }
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+    return this;
+  }
+
   includes(value) {
     // set indexor to head
     let current = this.head;

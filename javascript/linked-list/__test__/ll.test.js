@@ -53,4 +53,53 @@ describe('Linked List', () => {
     expect(list.toString()).toMatch(/TEST2/);
   });
 
+}),
+describe('ll-insertions', () => {
+
+  it('Can successfully add a node to the end of the linked list', () => {
+    let list = new LL();
+    list.append('TEST1');
+    list.append('TEST2');
+    expect(list.head.next.value).toEqual('TEST2');
+  });
+
+  it('Can successfully add multiple nodes to the end of a linked list', () => {
+    let list = new LL();
+    list.append('TEST1');
+    list.append('TEST2');
+    list.append('TEST3');
+    expect(list.head.next.next.value).toEqual('TEST3');
+  });
+
+  it('Can successfully insert a node before a node located in the middle of a linked list', () => {
+    let list = new LL();
+    list.insert('TEST1');
+    list.append('TEST3');
+    list.insertBefore('TEST3', 'TEST2');
+    expect(list.head.next.value).toEqual('TEST2');
+  });
+
+  it('Can successfully insert a node before the first node of a linked list', () => {
+    let list = new LL();
+    list.insert('TEST1');
+    list.insertBefore('TEST1', 'TEST0');
+    expect(list.head.value).toEqual('TEST0');
+  });
+
+  it('Can successfully insert after a node in the middle of the linked list', () => {
+    let list = new LL();
+    list.insert('TEST1');
+    list.append('TEST2');
+    list.append('TEST4');
+    list.insertAfter('TEST2', 'TEST3');
+    expect(list.head.next.next.value).toEqual('TEST3');
+  });
+
+  it('Can successfully insert a node after the last node of the linked list', () => {
+    let list = new LL();
+    list.insert('TEST1');
+    list.insert('TEST0');
+    list.insertAfter('TEST1', 'TEST2');
+    expect(list.head.next.next.value).toEqual('TEST2');
+  });
 });
