@@ -103,3 +103,44 @@ describe('ll-insertions', () => {
     expect(list.head.next.next.value).toEqual('TEST2');
   });
 });
+
+describe('kthFromEnd', () => {
+
+  it('should return exception when k is greater than list length', () => {
+    let list = new LL();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    expect(list.kthFromEnd(5)).toBe('Exception');
+  });
+
+  it('should return correctly when k is equal to list length', () => {
+    let list = new LL();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    expect(list.kthFromEnd(3)).toBe(1);
+  });
+  it('should return exception when k is not a positive integer', () => {
+    let list = new LL();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    expect(list.kthFromEnd(-3)).toBe('Exception');
+  });
+  it('should return when list is of size 1', () => {
+    let list = new LL();
+    list.append(1);
+    expect(list.kthFromEnd(3)).toBe('Exception');
+    expect(list.kthFromEnd(1)).toBe(1);
+  });
+  it('should return correctly on happy path', () => {
+    let list = new LL();
+    list.append(1);
+    list.append(2);
+    list.append(3);
+    expect(list.kthFromEnd(0)).toBe(3);
+    expect(list.kthFromEnd(1)).toBe(2);
+    expect(list.kthFromEnd(2)).toBe(1);
+  });
+});
