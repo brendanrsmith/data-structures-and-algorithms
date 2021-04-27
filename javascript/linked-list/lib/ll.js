@@ -47,7 +47,7 @@ class LinkedList {
 
   insertBefore(value, newVal) {
     try {
-    // instantiate a new node to add to our linkedlist
+      // instantiate a new node to add to our linkedlist
       let node = new Node(newVal);
       // set indexer to head
       let current = this.head;
@@ -56,7 +56,7 @@ class LinkedList {
         node.next = this.head;
         this.head = node;
       } else {
-      // let a previous variable
+        // let a previous variable
         let previous = this.head;
         current = current.next;
         // search for value in list
@@ -88,7 +88,7 @@ class LinkedList {
 
   insertAfter(value, newVal) {
     try {
-    // instantiate a new node to add to our linkedlist
+      // instantiate a new node to add to our linkedlist
       let node = new Node(newVal);
       // set indexer to head
       let current = this.head;
@@ -97,7 +97,7 @@ class LinkedList {
         node.next = current.next;
         current.next = node;
       } else {
-      // let a previous variable
+        // let a previous variable
         current = current.next;
         // search for value in list
         while (current.next) {
@@ -151,6 +151,25 @@ class LinkedList {
     }
     string += '} => NULL';
     return string;
+  }
+
+  kthFromEnd(k) {
+    if (k < 0) return 'Exception';
+    let counter = 1;
+    let current = this.head;
+    while (current.next) {
+      counter += 1;
+      current = current.next;
+    }
+    let kIndex = counter - k;
+    let index = 1;
+    let item = this.head;
+    if (kIndex < 0) return 'Exception';
+    while (index < kIndex) {
+      item = item.next;
+      index += 1;
+    }
+    return item.value;
   }
 }
 
