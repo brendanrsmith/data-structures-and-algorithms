@@ -29,6 +29,8 @@ O(n)
 ### API
 <!-- Description of each method publicly available to your Linked List -->
 
+## linked lists:
+
 `insert(value)` - Adds a new node value to the list at the head.
 
 `includes(value)` - Takes a value, and returns true/false if the value is present in the list.
@@ -42,3 +44,5 @@ O(n)
 `insertAfter(value, newVal)` - which add a new node with the given `newValue` immediately after the first `value` node.
 
 `kthFromEnd(k)` - which returns a node's value that is `k` from the end of the linked list.
+
+`zipLists(list1, list2)` - zips together two linked lists into a new list with alternating nodes from list1 and list2
