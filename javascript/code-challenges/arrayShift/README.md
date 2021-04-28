@@ -14,4 +14,4 @@ When the middle index is reached, set that value to the given insertion value.
 
 ## Solution
 <!-- Embedded whiteboard image -->
-![arrayWhiteboard](../../assests/array-shift.jpg)
+![arrayWhiteboard](../../assets/array-shift.jpg)
