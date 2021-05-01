@@ -20,7 +20,7 @@ class Stack {
   }
 
   isEmpty() {
-    
+
   }
 }
 

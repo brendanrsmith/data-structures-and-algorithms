@@ -20,7 +20,7 @@ class Queue {
   }
 
   isEmpty() {
-    
+
   }
 }
 
