@@ -23,7 +23,7 @@ class Queue {
   }
 
   dequeue() {
-    if (this.isEmpty()) return 'queue is empty';
+    if (this.isEmpty()) return 'empty queue';
 
     let temp = this.front;
     this.front = this.front.next;
@@ -33,6 +33,8 @@ class Queue {
   }
 
   peek() {
+    if (this.isEmpty()) return 'empty queue';
+
     return this.front.value;
   }
 
