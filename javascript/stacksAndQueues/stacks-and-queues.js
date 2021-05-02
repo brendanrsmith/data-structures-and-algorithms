@@ -7,4 +7,3 @@ module.exports = {
   Stack : Stack,
   Queue : Queue
 };
-
