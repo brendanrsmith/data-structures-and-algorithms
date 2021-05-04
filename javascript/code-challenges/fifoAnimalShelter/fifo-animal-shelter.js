@@ -19,6 +19,7 @@ class AnimalShelter {
   dequeue(pref) {
     if (pref === 'dog') return this.dogs.dequeue();
     if (pref === 'cat') return this.cats.dequeue();
+    return('only dogs and cats available');
   }
 }
 
