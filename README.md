@@ -1,16 +1,10 @@
 # Data Structures and Algorithms
 
-See [setup instructions](https://codefellows.github.io/setup-guide/code-301/3-code-challenges), in the Code 301 Setup Guide.
-
-## Repository Quick Tour and Usage
-
 ### 301 Code Challenges
 
-Under the `data-structures-and-algorithms` repository, at the top level is a folder called `code-challenges`
+[Here](./code-challenges)
 
-Each day, you'll add one new file to this folder to do your work for the day's assigned code challenge
-
-### 401 Data Structures, Code Challenges
+### 401 JavaScript Code Challenges
 
 [Array Binary Search](./javascript/code-challenges/arrayBinarySearch)
 
@@ -26,7 +20,7 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 
 [Multi Bracket Validation](./javascript/code-challenges/multiBracketValidation)
 
-## linked lists:
+## [linked lists](./javascript/linked-list)
 
 `insert(value)` - Adds a new node value to the list at the head.
 
@@ -44,7 +38,7 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 
 `zipLists(list1, list2)` - zips together two linked lists into a new list with alternating nodes from list1 and list2
 
-## Stacks:
+## [Stacks](./javascript/stacksAndQueues)
 
 `push(value)` - adds a new value to the stack.
 
@@ -54,7 +48,7 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 
 `isEmpty()` - checks if stack contains any values, returns a boolean.
 
-## Queues:
+## [Queues](./javascript/stacksAndQueues)
 
 `enqueue(value)` - adds a new value to the rear of the queue.
 
