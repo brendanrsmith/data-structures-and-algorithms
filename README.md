@@ -12,22 +12,19 @@ Each day, you'll add one new file to this folder to do your work for the day's a
 
 ### 401 Data Structures, Code Challenges
 
-- Please follow the instructions specific to your 401 language, which can be found in the directory below, matching your course.
+[Array Binary Search](./javascript/code-challenges/arrayBinarySearch)
 
-## Singly Linked List
-<!-- Short summary or background information -->
-A data structure consisting of a series of nodes, with each subsequent node containing two attributes: a value, and a pointer to the next node in the list.
+[Array Shift](./javascript/code-challenges/arrayShift)
 
-### Challenge
-<!-- Description of the challenge -->
-Create an implementation of a singly linked list, including methods for Appending, inserting, searching, and rendering a string containing a summary of all items contained in the list.
+[FIFO Animal Shelter](./javascript/code-challenges/fifoAnimalShelter)
 
-### Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
-O(n)
+[LinkedList Zip](./javascript/code-challenges/ll-zip)
 
-### API
-<!-- Description of each method publicly available to your Linked List -->
+[Queue with Stacks](./javascript/code-challenges/queueWithStacks)
+
+[Reverse LinkedList](./javascript/code-challenges/reverse-ll)
+
+[Multi Bracket Validation](./javascript/code-challenges/multiBracketValidation)
 
 ## linked lists:
 
