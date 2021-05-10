@@ -4,7 +4,7 @@ Define two new classes, `Stack` and `Queue`, which adhere to the following princ
 
 `Stack`: First in, last out / Last in, first out. Should contain methods for `push(value)`, `pop()`, `peek()`, and `isEmpty()`. All methods should run with a O(1) time efficiency.
 
-`Queue`: First in, first out / Last in, last out. Should contain methods for `enqueue(value)`, `dequeue()`, `peek()`, and `isEmpty()`. All methods should run with O(1) time efficiency. 
+`Queue`: First in, first out / Last in, last out. Should contain methods for `enqueue(value)`, `dequeue()`, `peek()`, and `isEmpty()`. All methods should run with O(1) time efficiency.
 
 ## Challenge Description
 <!-- Description of the challenge -->

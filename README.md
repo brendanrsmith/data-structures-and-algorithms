@@ -57,3 +57,19 @@
 `peek()` - returns the value at the front of the queue. Does not remove it from the queue.
 
 `isEmpty()` - checks if queue contains any values, returns a boolean.
+
+## [Trees](./javascript/tree)
+
+### Binary Tree
+
+`preOrder()` - returns pre ordered tree contents as array
+
+`inOrder()` - returns in ordered tree contents as array
+
+`postOrder()` - returns post ordered tree contents as array
+
+### Binary Search Tree
+
+`add(value)` - adds given value as node correctly ordered in BST
+
+`contains(value)` - returns boolean if given value is present at least once in BST
