@@ -76,6 +76,23 @@ class BinaryTree {
     _walk(this.root);
     return maxVal;
   }
+
+  breadthFirst() {
+    if (!this.root) return null;
+    let results = [];
+
+    let queue = [this.root]; // create a queue object containing the root node
+
+    while (queue.length > 0) { // while the queue contains nodes:
+      let current = queue.shift(); // set current node
+      results.push(current.value); // push current value to results array
+
+      if (current.left) queue.push(current.left);
+      if (current.right) queue.push(current.right);
+    }
+
+    return results;
+  }
 }
 
 module.exports = BinaryTree;

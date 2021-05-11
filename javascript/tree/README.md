@@ -13,6 +13,8 @@ Create a `BinarySearchTree` class
 Define a method named `add` that accepts a value, and adds a new node with that value in the correct location in the binary search tree.
 Define a method named `contains` that accepts a value, and returns a boolean indicating whether or not the value is in the tree at least once.
 
+Write a breadth first traversal method which takes a Binary Tree as its unique input. Without utilizing any of the built-in methods available to your language, traverse the input tree using a Breadth-first approach, and return a list of the values in the tree in the order they were encountered.
+
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
 
@@ -32,6 +34,8 @@ The Binary Search tree has an o(log(n)) time complexity.
 
 `findMaximumValue()` - returns the maximum value stored in a tree containing Numbers
 
+`breadthFirst()` - returns breadth-first ordered tree contents as array
+
 ### Binary Search Tree
 
 `add(value)` - adds given value as node correctly ordered in BST
@@ -41,3 +45,5 @@ The Binary Search tree has an o(log(n)) time complexity.
 ## Solution
 <!-- Embedded whiteboard image -->
 ![whiteboard](../assets/find-max-val.png)
+
+![whiteboard](../assets/breadth-first.png)
