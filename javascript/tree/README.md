@@ -30,8 +30,14 @@ The Binary Search tree has an o(log(n)) time complexity.
 
 `postOrder()` - returns post ordered tree contents as array
 
+`findMaximumValue()` - returns the maximum value stored in a tree containing Numbers
+
 ### Binary Search Tree
 
 `add(value)` - adds given value as node correctly ordered in BST
 
 `contains(value)` - returns boolean if given value is present at least once in BST
+
+## Solution
+<!-- Embedded whiteboard image -->
+![whiteboard](../assets/find-max-val.png)

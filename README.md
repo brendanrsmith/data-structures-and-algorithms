@@ -1,10 +1,10 @@
 # Data Structures and Algorithms
 
-### 301 Code Challenges
+## 301 Code Challenges
 
 [Here](./code-challenges)
 
-### 401 JavaScript Code Challenges
+## 401 JavaScript Code Challenges
 
 [Array Binary Search](./javascript/code-challenges/arrayBinarySearch)
 
