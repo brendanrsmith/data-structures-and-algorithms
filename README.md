@@ -20,6 +20,8 @@
 
 [Multi Bracket Validation](./javascript/code-challenges/multiBracketValidation)
 
+[Fizz Buzz Tree](./javascript/code-challenges/fizzBuzzTree)
+
 ## [linked lists](./javascript/linked-list)
 
 `insert(value)` - Adds a new node value to the list at the head.
