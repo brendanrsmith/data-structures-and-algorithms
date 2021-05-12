@@ -68,6 +68,10 @@
 
 `postOrder()` - returns post ordered tree contents as array
 
+`findMaximumValue()` - returns the maximum value stored in a tree containing Numbers
+
+`breadthFirst()` - returns breadth-first ordered tree contents as array
+
 ### Binary Search Tree
 
 `add(value)` - adds given value as node correctly ordered in BST

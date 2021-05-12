@@ -21,8 +21,8 @@ three.right = five;
 // bt.add(one);
 // console.log(bt);
 // console.log(bt.findMaximumValue());
+// console.log(bt.breadthFirst());
 // let tree = new BST();
-
 // tree.add(4);
 // tree.add(1);
 // tree.add(3);
