@@ -22,6 +22,8 @@
 
 [Fizz Buzz Tree](./javascript/code-challenges/fizzBuzzTree)
 
+[Insertion Sort](./javascript/code-challenges/insertionSort)
+
 ## [linked lists](./javascript/linked-list)
 
 `insert(value)` - Adds a new node value to the list at the head.
