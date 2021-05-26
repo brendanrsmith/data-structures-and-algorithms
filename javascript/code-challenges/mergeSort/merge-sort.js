@@ -40,11 +40,13 @@ function merge(left, right, arr) {
   if (i === left.length) {
     while (j < right.length) {
       arr[k] = right[j];
+      k += 1;
       j += 1;
     }
   } else {
     while (i < left.length) {
       arr[k] = left[i];
+      k += 1;
       i += 1;
     }
   }
