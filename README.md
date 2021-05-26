@@ -24,6 +24,8 @@
 
 [Insertion Sort](./javascript/code-challenges/insertionSort)
 
+[Merge Sort](./javascript/code-challenges/mergeSort)
+
 ## [linked lists](./javascript/linked-list)
 
 `insert(value)` - Adds a new node value to the list at the head.
