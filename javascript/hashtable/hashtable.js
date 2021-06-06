@@ -98,13 +98,13 @@ class Hashmap {
 }
 
 let hashmap = new Hashmap(3);
-
 hashmap.add('brian', 'nations');
+console.log(hashmap);
 hashmap.add('alex', 'samson');
 hashmap.add('alexx', 'xsbbis');
 hashmap.add('tom', 'thomson');
 hashmap.add('sarah', 'harrasas');
 
-console.log(hashmap.contains('alfdsaex'));
+// console.log(hashmap.contains('alfdsaex'));
 
 module.exports = Hashmap;
