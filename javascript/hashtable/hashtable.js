@@ -26,10 +26,14 @@ class LL {
 
     let current = this.head;
 
+    let result = [];
+
     while (current) {
-      console.log(current.val);
+      // console.log(current.val);
+      result.push(current.val);
       current = current.next;
     }
+    return result;
   }
 }
 
@@ -52,7 +56,7 @@ class Hashmap {
   }
 
   // add a new key/val pair into our hashmap
-  set(key, val) {
+  add(key, val) {
     let hash = this.hash(key);
 
     if (!this.storage[hash]) {
@@ -60,23 +64,47 @@ class Hashmap {
       ll.add([key, val]);
       this.storage[hash] = ll;
     } else {
-      this.storage[hash].add(key, val);
+      this.storage[hash].add([key, val]);
     }
   }
 
   // retreive a value given a key from our hashmap
-  get() {
+  get(key) {
+    let hash = this.hash(key);
 
+    if (this.storage[hash]) {
+
+      const hashTable = this.storage[hash].getList();
+      const value = hashTable.filter(element => element[0] === key.toString());
+      if (value[0]){
+        return value[0][1];
+      } else return 'not found';
+    }
+  }
+
+  contains(key) {
+    let hash = this.hash(key);
+
+    if (this.storage[hash]) {
+
+      const hashTable = this.storage[hash].getList();
+      const value = hashTable.filter(element => element[0] === key.toString());
+      if (value[0]){
+        return true;
+      } else return false;
+    }
   }
 
 }
 
 let hashmap = new Hashmap(3);
-
-hashmap.set('brian', 'nations');
-hashmap.set('alex', 'samson');
-hashmap.set('alex', 'xsbbis');
-hashmap.set('tom', 'thomson');
-hashmap.set('sarah', 'harrasas');
-
+hashmap.add('brian', 'nations');
 console.log(hashmap);
+hashmap.add('alex', 'samson');
+hashmap.add('alexx', 'xsbbis');
+hashmap.add('tom', 'thomson');
+hashmap.add('sarah', 'harrasas');
+
+// console.log(hashmap.contains('alfdsaex'));
+
+module.exports = Hashmap;

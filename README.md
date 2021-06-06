@@ -26,6 +26,8 @@
 
 [Merge Sort](./javascript/code-challenges/mergeSort)
 
+[Quick Sort](./javascript/code-challenges/quickSort)
+
 ## [linked lists](./javascript/linked-list)
 
 `insert(value)` - Adds a new node value to the list at the head.
@@ -83,3 +85,13 @@
 `add(value)` - adds given value as node correctly ordered in BST
 
 `contains(value)` - returns boolean if given value is present at least once in BST
+
+## [Hash Table](./javascript/hashtable)
+
+`add(key, value)` - takes in both the key and value. This method should hash the key, and add the key and value pair to the table, handling collisions as needed.
+
+`get(key)` - takes in the key and returns the value from the table.
+
+`contains(key)` - takes in the key and returns a boolean, indicating if the key exists in the table already.
+
+`hash(key)`: takes in an arbitrary key and returns an index in the collection.
