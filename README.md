@@ -28,6 +28,8 @@
 
 [Quick Sort](./javascript/code-challenges/quickSort)
 
+[Repeated Word](./javascript/code-challenges/repeatedWord)
+
 ## [linked lists](./javascript/linked-list)
 
 `insert(value)` - Adds a new node value to the list at the head.
