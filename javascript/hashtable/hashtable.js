@@ -79,7 +79,7 @@ class Hashmap {
       if (value[0]){
         return value[0][1];
       } else return 'not found';
-    }
+    } return 'not found';
   }
 
   contains(key) {
@@ -93,17 +93,18 @@ class Hashmap {
         return true;
       } else return false;
     }
+    return false;
   }
 
 }
 
-let hashmap = new Hashmap(3);
-hashmap.add('brian', 'nations');
-console.log(hashmap);
-hashmap.add('alex', 'samson');
-hashmap.add('alexx', 'xsbbis');
-hashmap.add('tom', 'thomson');
-hashmap.add('sarah', 'harrasas');
+// let hashmap = new Hashmap(3);
+// hashmap.add('brian', 'nations');
+// console.log(hashmap);
+// hashmap.add('alex', 'samson');
+// hashmap.add('alexx', 'xsbbis');
+// hashmap.add('tom', 'thomson');
+// hashmap.add('sarah', 'harrasas');
 
 // console.log(hashmap.contains('alfdsaex'));
 

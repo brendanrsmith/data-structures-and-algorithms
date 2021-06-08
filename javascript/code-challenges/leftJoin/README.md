@@ -20,12 +20,11 @@ Modify your function to return a list of the words most frequently used in the p
 
 ## Whiteboard Process
 <!-- Embedded whiteboard image -->
-![whiteboard](../../assets/repeated-word.png)
+![whiteboard](../../assets/left-join.png)
 
 ## Approach & Efficiency
 <!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
-I used a nested for loop to compare the current word in the string with an array of 'parsed words' that have already been checked. This results in a simple function with an O(n^2) worst-case scenario.
+I used a simple for loop to loop over all items in the left hash table, inside of which I query the right hash table to see if a corresponding key exists there. If not, the right value is set to null. Then both left and right values are added to a new hash table of equal size to the given left map. Since these operations all rely on looping over the initial hash table, we are left with an O(n) time and space efficiency (all lookups take place in O(1) time/space).
 
 ## Solution
 <!-- Show how to run your code, and examples of it in action -->
-![whiteboard](../../assets/repeated-word-run.png)
