@@ -30,6 +30,8 @@
 
 [Repeated Word](./javascript/code-challenges/repeatedWord)
 
+[Left Join](./javascript/code-challenges/leftJoin)
+
 ## [linked lists](./javascript/linked-list)
 
 `insert(value)` - Adds a new node value to the list at the head.
@@ -97,3 +99,5 @@
 `contains(key)` - takes in the key and returns a boolean, indicating if the key exists in the table already.
 
 `hash(key)`: takes in an arbitrary key and returns an index in the collection.
+
+`leftJoin(left, right)` : takes two hash tables and performs a left-join, returning a new hash table.
