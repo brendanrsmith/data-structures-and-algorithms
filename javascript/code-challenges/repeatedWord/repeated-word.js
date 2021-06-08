@@ -20,3 +20,5 @@ function repeatedWord(string) {
 }
 
 module.exports = repeatedWord;
+
+console.log(repeatedWord('It was a queer, sultry summer , the summer they electrocuted the Rosenbergs, and I didn’t know what I was doing in New York...'));
